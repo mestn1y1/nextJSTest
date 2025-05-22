@@ -1,13 +1,21 @@
-import StatusLabel, { Status } from './components/status-label';
+export const dynamic = 'force-dynamic';
+import { headers } from 'next/headers';
 
-export default function Home() {
+import AddCompanyButton from './components/add-company-button';
+import ServerComponent from './components/server-component';
+import ClientComponent from './components/client-component';
+import ServerComponentCopy from './components/server-component copy';
+
+export default async function Home() {
+  const now = new Date().toTimeString();
   return (
     <main>
-      <h1 className="text-xl">Home page</h1>
-      <StatusLabel status={Status.Active}>Active</StatusLabel>
-      <StatusLabel status={Status.NotActive}>NotActive</StatusLabel>
-      <StatusLabel status={Status.Pending}>Pending</StatusLabel>
-      <StatusLabel status={Status.Suspended}>Suspended</StatusLabel>
+      <h1 className="text-xl">Home page {now}</h1>
+      <AddCompanyButton />
+      <ServerComponent />
+      <ClientComponent>
+        <ServerComponentCopy />
+      </ClientComponent>
     </main>
   );
 }
