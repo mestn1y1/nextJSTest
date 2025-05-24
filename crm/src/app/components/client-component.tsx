@@ -6,7 +6,6 @@ export interface ClientComponentProps {
 }
 
 export default function ClientComponent({ children }: ClientComponentProps) {
-  console.log('Client component');
   return (
     <div>
       <span>Client Component</span>
