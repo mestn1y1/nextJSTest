@@ -6,6 +6,7 @@ import AddCompanyButton from '../../components/add-company-button';
 import CompanyTable from '../../components/company-table';
 import CompanyRow from '../../components/company-row';
 import { CompanyStatus } from '../../../lib/api';
+
 export interface PageProps {}
 
 export default function Page({}: PageProps) {
