@@ -1,4 +1,6 @@
 import React from 'react';
+import { Company, getCompany } from '@/lib/api';
+import getQueryClient from '@/lib/utils/getQueryClient';
 import Header from '../../../../components/header';
 
 export interface PageProps {
@@ -6,11 +8,15 @@ export interface PageProps {
 }
 
 export default async function Page({ params }: PageProps) {
+  const queryClient = getQueryClient();
   const { id } = await params;
+  await queryClient.prefetchQuery({
+    queryKey: ['companies', id],
+    queryFn: () => getCompany(id, { cache: 'no-store' }),
+    staleTime: 10 * 1000,
+  });
 
-  return (
-    <>
-      <Header>{`Company (${id})`}</Header>
-    </>
-  );
+  const company = queryClient.getQueryData(['companies', id]) as Company;
+
+  return <Header>{company?.title}</Header>;
 }
