@@ -2,7 +2,7 @@ import React from 'react';
 import { getCategories, getCompanies } from '@/lib/api';
 import StatCard, { StatCardType } from '../../../components/stat-card';
 import DashboardCard from '../../../components/dashboard-card';
-import getCountById from '@/lib/utils/getCounById';
+import getCountById from '@/lib/utils/getCountById';
 
 export interface PageProps {}
 export default async function Page({}: PageProps) {
